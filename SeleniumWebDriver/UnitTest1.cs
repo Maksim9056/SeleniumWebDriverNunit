@@ -21,18 +21,19 @@ namespace SeleniumWebDriver
 
             try
             {
-                IWebElement searchBox = wait.Until(driver => driver.FindElement(By.CssSelector("#inp")));
+                IWebElement searchBox = wait.Until(d => d.FindElement(By.CssSelector("#editor_text")));
                 searchBox.SendKeys("Selenium C#");
 
                 // Нажатие кнопки поиска
                 searchBox.SendKeys(Keys.Enter);
 
                 // Проверка результатов
-                Assert.IsTrue(driver.Title.Contains("Selenium C#"));
+                Assert.IsTrue(searchBox.Text.Contains("Selenium C#"));
+
             }
             catch (WebDriverTimeoutException ex)
             {
-                Console.WriteLine($"Таймаут. Элемент с идентификатором 'inp' не найден: {ex.Message}");
+                Console.WriteLine($"Таймаут. Элемент с идентификатором 'editor_text' не найден: {ex.Message}");
             }
             finally
             {
