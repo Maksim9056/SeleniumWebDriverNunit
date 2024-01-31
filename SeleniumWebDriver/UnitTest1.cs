@@ -13,8 +13,11 @@ namespace SeleniumWebDriver
         {
             var edgeOptions = new EdgeOptions();
 
-            IWebDriver driver = new EdgeDriver(@"C:\edgedriver_win64\msedgedriver.exe", edgeOptions);
+            IWebDriver driver = new EdgeDriver(@"C:\edgedriver_win64\msedgedriver.exe", edgeOptions);        
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             driver.Navigate().GoToUrl("https://konflic.github.io/examples/editor/index.html");
+
+
 
             // Явное ожидание появления элемента с идентификатором "inp" до 20 секунд
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
