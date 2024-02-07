@@ -94,7 +94,7 @@ namespace SeleniumWebDriver
                  searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[1]/div[5]/div[1]/input[1]")));
                  searchBox.SendKeys("+79226012118");
                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[2]/div[1]/div[1]/input[1]")));
-                searchBox.SendKeys("11");
+                searchBox.SendKeys("1111");
                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[2]/div[2]/div[1]/input[1]")));
                 searchBox.SendKeys("1111");
                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[3]/div[1]/div[1]/label[2]")));
