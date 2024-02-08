@@ -69,16 +69,14 @@ namespace SeleniumWebDriver
                 // Нажать на изображение
                 imageElement.Click();
 
-               driver.Navigate().Back();
+                driver.Navigate().Back();
                 IWebElement searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/div[1]/nav/div[2]/ul/li[1]/a")));
                 searchBox.SendKeys(Keys.Enter);
                 searchBox = wait.Until(d => d.FindElement(By.CssSelector("div.container:nth-child(3) nav.navbar div.collapse.navbar-collapse.navbar-ex1-collapse ul.nav.navbar-nav li.dropdown:nth-child(1) div.dropdown-menu div.dropdown-inner ul.list-unstyled li:nth-child(1) > a:nth-child(1)")));
                 searchBox.SendKeys(Keys.Enter);
            
                  searchBox = wait.Until(d => d.FindElement(By.CssSelector("body:nth-child(2) div.container:nth-child(4) div.row div.col-sm-9 > p:nth-child(2)")));
-                //bool i = searchBox.Text.Contains("В данной категори");
-
-                bool i = searchBox.Text == "В данной категории нет";
+                 bool i = searchBox.Text == "В данной категории нет";
                 Assert.IsTrue(searchBox.Text == "В данной категории нет товаров.");
                 //driver.Navigate().Back();
                  searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/nav/div/div/ul/li[2]/a")));
@@ -90,7 +88,7 @@ namespace SeleniumWebDriver
                  searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[1]/div[3]/div[1]/input[1]")));
                  searchBox.SendKeys("Бобрецов");
                  searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[1]/div[4]/div[1]/input[1]")));
-                 searchBox.SendKeys("test@mail.ru");
+                 searchBox.SendKeys("testmaksimbc@mail.ru");
                  searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[1]/div[5]/div[1]/input[1]")));
                  searchBox.SendKeys("+79226012118");
                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[2]/div[1]/div[1]/input[1]")));
@@ -99,11 +97,22 @@ namespace SeleniumWebDriver
                 searchBox.SendKeys("1111");
                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[3]/div[1]/div[1]/label[2]")));
                 searchBox.SendKeys(Keys.Enter);
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]")));
+                //searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]")));
+                //searchBox.Click();
+                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/div[2]/div/div/form/div/div/input[1]")) );
                 searchBox.Click();
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[2]/div[1]/form[1]/div[1]/div[1]/input[2]")));
+                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/div[2]/div[2]/div/form/div/div/input[2]")));
                 searchBox.Click();
-                /////html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[2]/div[1]/div[1]/input[1]
+                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/header/div/div/div[1]/div/h1/a")));
+                searchBox.Click();
+                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/header/div/div/div[2]/div/input")));
+                searchBox.SendKeys("Selenium C#");
+                searchBox.SendKeys(Keys.Enter);
+                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/div[2]/div/div/p[2]")));
+                bool a = searchBox.Text == "Нет товаров, которые соответствуют критериям";
+
+                Assert.IsTrue(searchBox.Text == "Нет товаров, которые соответствуют критериям поиска.");
+
             }
             catch (WebDriverTimeoutException)
             {
