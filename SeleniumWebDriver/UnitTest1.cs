@@ -5,6 +5,7 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 using System.Reflection.Metadata;
 using System;
+using System.Xml.Linq;
 
 namespace SeleniumWebDriver
 {
@@ -51,7 +52,18 @@ namespace SeleniumWebDriver
             //}div.container:nth-child(4) div.row div.col-sm-12 div.row:nth-child(4) div.product-layout.col-lg-3.col-md-3.col-sm-6.col-xs-12:nth-child(2) div.product-thumb.transition div.image a:nth-child(1) > img.img-responsive
        
         }
+        public string категория = "В данной категории нет";
+        public string категориянастоящая = "В данной категории нет товаров.";
+        public string Name = "Maksim";
+        public string FirstName = "Бобрецов";
+        public string Mail = "testmaksimbc@mail.ru";
+        public string PhoneNumbers = "+79226012118";
+        public string Password = "1111";
 
+
+        public string критерииложПоиска = "Нет товаров, которые соответствуют критериям";
+        public string критерииПоиска = "Нет товаров, которые соответствуют критериям поиска.";
+        public string Text = "Selenium C#";
         [Test]
         public void SecondSeleniumTest()
         {
@@ -62,56 +74,34 @@ namespace SeleniumWebDriver
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
                 driver.Navigate().GoToUrl("https://demo-opencart.ru/index.php?route=common/home");
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-                //IWebElement imageElements = driver.FindElement(By.CssSelector("div.product-thumb img"));
                 // Найти изображение (предполагается, что у изображения есть уникальный атрибут или класс)
-                IWebElement imageElement = wait.Until(d => d.FindElement(By.CssSelector("div.product-thumb img")));
-
-                // Нажать на изображение
-                imageElement.Click();
-
+                Product product = new Product();
+                product.AddWebDriver(wait);
+                product.ImageClick();
                 driver.Navigate().Back();
-                IWebElement searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/div[1]/nav/div[2]/ul/li[1]/a")));
-                searchBox.SendKeys(Keys.Enter);
-                searchBox = wait.Until(d => d.FindElement(By.CssSelector("div.container:nth-child(3) nav.navbar div.collapse.navbar-collapse.navbar-ex1-collapse ul.nav.navbar-nav li.dropdown:nth-child(1) div.dropdown-menu div.dropdown-inner ul.list-unstyled li:nth-child(1) > a:nth-child(1)")));
-                searchBox.SendKeys(Keys.Enter);
-           
-                 searchBox = wait.Until(d => d.FindElement(By.CssSelector("body:nth-child(2) div.container:nth-child(4) div.row div.col-sm-9 > p:nth-child(2)")));
-                 bool i = searchBox.Text == "В данной категории нет";
-                Assert.IsTrue(searchBox.Text == "В данной категории нет товаров.");
-                //driver.Navigate().Back();
-                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/nav/div/div/ul/li[2]/a")));
-                 searchBox.SendKeys(Keys.Enter);
-                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/nav/div/div/ul/li[2]/ul/li[1]/a")));
-                 searchBox.SendKeys(Keys.Enter);
-                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[1]/div[2]/div[1]/input[1]")));
-                 searchBox.SendKeys("Maksim");
-                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[1]/div[3]/div[1]/input[1]")));
-                 searchBox.SendKeys("Бобрецов");
-                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[1]/div[4]/div[1]/input[1]")));
-                 searchBox.SendKeys("testmaksimbc@mail.ru");
-                 searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[1]/div[5]/div[1]/input[1]")));
-                 searchBox.SendKeys("+79226012118");
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[2]/div[1]/div[1]/input[1]")));
-                searchBox.SendKeys("1111");
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[2]/div[2]/div[1]/input[1]")));
-                searchBox.SendKeys("1111");
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/fieldset[3]/div[1]/div[1]/label[2]")));
-                searchBox.SendKeys(Keys.Enter);
-                //searchBox = wait.Until(d => d.FindElement(By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]")));
-                //searchBox.Click();
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/div[2]/div/div/form/div/div/input[1]")) );
-                searchBox.Click();
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/div[2]/div[2]/div/form/div/div/input[2]")));
-                searchBox.Click();
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/header/div/div/div[1]/div/h1/a")));
-                searchBox.Click();
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/header/div/div/div[2]/div/input")));
-                searchBox.SendKeys("Selenium C#");
-                searchBox.SendKeys(Keys.Enter);
-                searchBox = wait.Until(d => d.FindElement(By.XPath("/html/body/div[2]/div/div/p[2]")));
-                bool a = searchBox.Text == "Нет товаров, которые соответствуют критериям";
+                Компьютеры компьютеры = new  Компьютеры();
+                компьютеры.AddWeb(wait, категория, категориянастоящая);
+                компьютеры.Kategroy();
+                компьютеры.FindClicPC();
+                компьютеры.CheckKategory();
+                RegUsers regUsers = new RegUsers();
+                regUsers.AddParametrRegUsers(wait, Name,FirstName,Mail, PhoneNumbers,Password);
+                regUsers.RegUserStart();
+                regUsers.EnterName();
+                regUsers.EnterFirstName();
+                regUsers.EnterMail();
+                regUsers.EnterPhoneNumbers();
+                regUsers.EnterPassword();
+                regUsers.EnterRepeatPassword();
+                regUsers.ClickPoint();
+                regUsers.ClicklointCheckV();
+                regUsers.ClickPointPolitical();
+                regUsers.ClickElementbotton();
+                 MainPages mainPages = new MainPages();
+                mainPages.AddParametrSearh(wait, критерииложПоиска, критерииПоиска, Text);
+                mainPages.EnterSearhEnter();
+                mainPages.Check();
 
-                Assert.IsTrue(searchBox.Text == "Нет товаров, которые соответствуют критериям поиска.");
 
             }
             catch (WebDriverTimeoutException)
@@ -125,5 +115,6 @@ namespace SeleniumWebDriver
             }
         }
     }
+
     
 }
