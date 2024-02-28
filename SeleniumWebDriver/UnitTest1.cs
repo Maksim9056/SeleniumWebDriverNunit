@@ -6,6 +6,7 @@ using OpenQA.Selenium.Chrome;
 using System.Reflection.Metadata;
 using System;
 using System.Xml.Linq;
+using OpenQA.Selenium.Firefox;
 
 namespace SeleniumWebDriver
 {
@@ -17,8 +18,16 @@ namespace SeleniumWebDriver
         [Test]
         public void SecondSeleniumTest()
         {
+            IWebDriver driver = null;
+            int i = 1;
             var chromeOptions = new ChromeOptions();
-            IWebDriver driver = new ChromeDriver(@"C:\chromedriver-win64\", chromeOptions);
+            driver = new ChromeDriver(@"C:\chromedriver-win64\", chromeOptions);
+            if (i == 1)
+            {
+                var options = new FirefoxOptions();
+                driver = new FirefoxDriver(@"C:\geckodriver-v0.34.0-win32\geckodriver.exe", options);
+            }
+
             try
             {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
