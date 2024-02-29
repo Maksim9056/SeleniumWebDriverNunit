@@ -19,7 +19,7 @@ namespace SeleniumWebDriver
         public void SecondSeleniumTest()
         {
             IWebDriver driver = null;
-            int i = 1;
+            int i = 0;
             var chromeOptions = new ChromeOptions();
             driver = new ChromeDriver(@"C:\chromedriver-win64\", chromeOptions);
             if (i == 1)
@@ -46,20 +46,20 @@ namespace SeleniumWebDriver
                 RegUsers regUsers = new RegUsers();
                 regUsers.AddParametrRegUsers(wait, Name, FirstName, Mail, PhoneNumbers, Password);
                 regUsers.RegUserStart();
-                regUsers.EnterName();
-                regUsers.EnterFirstName();
-                regUsers.EnterMail();
-                regUsers.EnterPhoneNumbers();
-                regUsers.EnterPassword();
-                regUsers.EnterRepeatPassword();
-                regUsers.ClickPoint();
-                regUsers.ClicklointCheckV();
-                regUsers.ClickPointPolitical();
-                regUsers.ClickElementbotton();
+                //regUsers.EnterName();
+                //regUsers.EnterFirstName();
+                //regUsers.EnterMail();
+                //regUsers.EnterPhoneNumbers();
+                //regUsers.EnterPassword();
+                //regUsers.EnterRepeatPassword();
+                //regUsers.ClickPoint();
+                //regUsers.ClicklointCheckV();
+                //regUsers.ClickPointPolitical();
+                //regUsers.ClickElementbotton();
                 MainPages mainPages = new MainPages();
                 mainPages.AddParametrSearh(wait, критерииложПоиска, критерииПоиска, Text);
-                //mainPages.EnterSearhEnter();
-                //mainPages.Check();
+                mainPages.EnterSearhEnter();
+                mainPages.Check();
                 mainPages.Aboutflippingthepage();
                 mainPages.Addwishlist();
                 mainPages.AddBucked();
